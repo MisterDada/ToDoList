@@ -1,45 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-html {
-  font-family: "Montserrat", sans-serif;
-}
-
-:root{
-  --primary-color: #313131;
-  --secondary-color: #1b3c3c;
-  --tertiary-color: #f9f9f9;
-  --quaternary-color: #9d9d9d;
-}
 
 
-
-.namespace{
-  display: flex;
-  flex-direction: row;
-  gap: 3px;
-}
-
-
-
-.caret{
-  background-color: #f9f9f9;
-    width: 0.25rem;
-    height: 2rem;
-
-    animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-  0%, 100% {
-      background-color: transparent;
-  }
-  50% {
-      background-color: #f9f9f9;
-  }
-}
 
 
 .body {

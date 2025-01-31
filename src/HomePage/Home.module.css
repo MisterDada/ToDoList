@@ -1,0 +1,55 @@
+
+.body{
+  background: var(--primary-color);
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+  gap: 10%;
+}
+
+
+.taskcontainer{
+    height: 80%;
+    width: 20%;
+    padding: 30px 10px;
+    border-radius: 10px;
+    background-color: var(--fifth-color);
+}
+
+.taskcontainer h1{
+    color: var(--tertiary-color);
+}
+
+.taskcontainer input{
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.taskinput-description{
+    height: 200px;
+}
+
+.taskcontainer button{
+    width: 100%;
+    background-color: var(--secondary-color);
+}
+.taskcontainer button:hover{
+    background-color: #336f6f;
+}
+
+
+.createdtodos{
+    height: 80%;
+    width: 60%;
+    padding: 30px 10px;
+    border-radius: 10px;
+    background-color: var(--fifth-color);
+    overflow: hidden;
+}
+.addedtaskscontainer{
+    overflow-y: scroll;
+    overflow: hidden;
+}
