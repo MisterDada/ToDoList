@@ -61,7 +61,7 @@ margin-top: auto;
 }
 
 /*style for html elements*/
-h1{
+.container h1{
 color: white;
 margin-bottom: 3rem;
 }

@@ -1,7 +1,20 @@
+.sidebar{
+    height: 100vh;
+    width: fit-content;
+    padding: 10px;
+    background-color: black;
+}
+.sidebar-img{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
 
 .body{
-  background: var(--primary-color);
-  padding: 10px 30px;
+  padding: 10px;
+  padding-right: 30px;
+  padding-left: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,11 +29,12 @@
     padding: 30px 10px;
     border-radius: 10px;
     background-color: var(--fifth-color);
+    h1{
+    color: var(--tertiary-color);
+    }
 }
 
-.taskcontainer h1{
-    color: var(--tertiary-color);
-}
+
 
 .taskcontainer input{
     width: 100%;
@@ -50,6 +64,26 @@
     overflow: hidden;
 }
 .addedtaskscontainer{
+    padding: 10px 20px;
     overflow-y: scroll;
     overflow: hidden;
+}
+
+.task{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.task h2{
+    color: white;
+   
+}
+.task  button{
+    width: 10%;
+    height: 1.8rem;
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    font-size: 1.3rem;
 }

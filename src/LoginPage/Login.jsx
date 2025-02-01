@@ -25,10 +25,6 @@ function Login() {
     <div className={styles['body']}>
 
         <div className={styles['image-section']}>
-            <div className={styles['namespace']}>
-            <h1>Hello</h1>
-           
-            </div>
             
             <p>Enter your details and start journey with us</p>
             <ul>
@@ -39,7 +35,7 @@ function Login() {
             </ul>
         </div>
 
-    <div className={styles.container}>
+    <div className={styles['container']}>
         <form action="" method="post" className={styles['form-container']} noValidate onSubmit={handleSubmit}>
           <h1>Sign-in</h1>
           <div className={styles['input-field']}>

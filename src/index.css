@@ -8,6 +8,7 @@
   }
   
   :root{
+    background-color: var(--primary-color);
     --primary-color: #313131;
     --secondary-color: #1b3c3c;
     --tertiary-color: #f9f9f9;
