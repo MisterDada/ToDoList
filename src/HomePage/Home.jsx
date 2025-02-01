@@ -5,16 +5,20 @@ import { useState } from 'react'
 function Home() {
     const [todo, setTodo] = useState({name: '', description: ''})
     const [todos, setTodos] = useState([])
+    const [editIndex, setEditIndex] = useState(null)
 
     const handleTodo = (e) => {
         setTodo({...todo, [e.target.name]: e.target.value})
     }
 
     const handleAddTodo = (e) => {
+      if (editIndex !== null) {
+        handleEditTodo(editIndex)
+    } else {
         setTodos([...todos, todo])
-        console.log('added', todos)
-        setTodo({name: '', description: ''}) // Clear the input fields after adding
-        
+    }
+    setTodo({name: '', description: ''}) // Clear the input fields after adding
+    setEditIndex(null)
     }
 
     const handleDeleteTodo = (index) => {
@@ -22,14 +26,45 @@ function Home() {
         setTodos(newTodos)
     }
 
+    const handleEditTodo = (index) => {
+        const newTodos = todos.map((task, i) => {
+            if(i === index){
+                return {
+                    ...task,
+                    name: todo.name,
+                    description: todo.description
+                }
+            }
+            return task
+        })
+        setTodos(newTodos)
+    }
+
+    const populateEditFields = (index) => {
+      setTodo({
+          name: todos[index].name,
+          description: todos[index].description
+      })
+      setEditIndex(index)
+  }
+
     return (
         <>
         
-            <div className={styles['body']}>
+          <div className={styles['body']}>
             <aside className={styles['sidebar']}>
-              <div className={styles['sidebar-img']}><span> <img src="src\assets\group_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span></div>
-              <div className={styles['sidebar-img']}><span> <img src="src\assets\settings_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span></div>
-              <div className={styles['sidebar-img']}><span> <img src="src\assets\logout_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span></div>
+              <div className={styles['sidebar-img']}><span> <img src="src\assets\group_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span>
+              <p>Collaborators</p>
+              </div>
+              <div className={styles['sidebar-img']}><span> <img src="src\assets\settings_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span>
+              <p>Settings</p>
+              </div>
+              <div className={styles['sidebar-img']}><span> <img src="src\assets\logout_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span>
+              <p>Logout</p>
+              </div>
+              <div className={styles['sidebar-img']}><span> <img src="src\assets\chat_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span>
+              <p>Chat</p>
+              </div>
         </aside>
                 <div className={styles['taskcontainer']}>
                     <h1>Tasks:</h1>
@@ -45,8 +80,9 @@ function Home() {
                             <li>{index+1}</li>
                             <h2>{task.name}</h2>
                             <p>{task.description}</p>
-                            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
-                            <button >Done</button>
+                            <img className={styles['task-button']} onClick={() => handleDeleteTodo(index)} src="src\assets\delete_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+                            <img className={styles['task-button']} src="src\assets\check_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+                            <img className={styles['task-button']} onClick={() => populateEditFields(index)} src="src\assets\edit_square_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
                         </div>
                     ))}
                   </div>
