@@ -1,6 +1,9 @@
 import React from 'react'
 import styles from './Home.module.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import useStore from '../StateManager'
+
 
 function Home() {
     const [todo, setTodo] = useState({name: '', description: ''})
@@ -16,7 +19,7 @@ function Home() {
       if (editIndex !== null) {
         handleEditTodo(editIndex)
     } 
-    else if (todo.name === '' || todo.description === '') {
+    else if (todo.name === '' && todo.description === '') {
         e.preventDefault()
     alert('Please fill in all the fields')
     }
@@ -54,6 +57,12 @@ function Home() {
       setEditIndex(index)
   }
 
+
+  //For state manager
+  const completeTodo = useStore((state) => state.completeTodo)
+  const completeTodos = useStore((state) => state.completeTodos)
+
+
     return (
         <>
         
@@ -66,6 +75,9 @@ function Home() {
                     </div>
                     <div className={styles['sidebar-img']}><span> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1b3c3c"><path d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg></span>
                     <p>Chat</p>
+                    </div> 
+                    <div>
+                        <Link to='Completed-Notes'>Completed Notes</Link>
                     </div>
                 </div>
                 <div>
@@ -75,6 +87,7 @@ function Home() {
                     <div className={styles['sidebar-img']}><span> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1b3c3c"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></span>
                     <p>Logout</p>
                     </div>
+                    
                 </div>
               
               
@@ -95,7 +108,7 @@ function Home() {
                             <p>{task.description}</p>
                             <img className={styles['task-button']} onClick={() => handleDeleteTodo(index)} src="src\assets\delete_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
                             <img className={styles['task-button']} onClick={() => populateEditFields(index)} src="src\assets\edit_square_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
-                            <img className={styles['task-button']} src="src\assets\check_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+                            <img className={styles['task-button']} onClick={() => completeTodo(completeTodos)}  src="src\assets\check_24dp_1B3C3C_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
                         </div>
                     ))}
                   </div>
