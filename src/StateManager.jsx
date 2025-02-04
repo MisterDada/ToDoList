@@ -2,14 +2,14 @@ import { create } from "zustand";
 
 const useStore = create((set) => ({
   completeTodos: [],
-  completeTodo: (newTodos) => set({ completeTodos: newTodos }),
+  completeTodo: (newTodo) => 
+    set((state) => ({
+      completeTodos: [...state.completeTodos, newTodo]
+    })),
 
-  addToCompleteTodoPage: (newTodos) =>
+  addToCompleteTodoPage: (newTodo) =>
     set((state) => {
-     
-  
-      const updatedTodo = [...state.completeTodos, newTodos];
-      console.log("this doesnt exist");
+      const updatedTodo = [...state.completeTodos, newTodo];
       return { completeTodos: updatedTodo };
     }),
 }));

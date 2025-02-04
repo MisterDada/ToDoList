@@ -54,7 +54,7 @@ function Home() {
   };
 
   // For StateManager
-  const completeTodo = useStore((state) => state.completeTodo);
+//   const completeTodo = useStore((state) => state.completeTodo);
   const addToCompleteTodoPage = useStore(
     (state) => state.addToCompleteTodoPage
   );
