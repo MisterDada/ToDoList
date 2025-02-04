@@ -6,7 +6,7 @@ function DoneNotes() {
     const completeTodos = useStore((state) => state.completeTodos)
   return (
         <>
-           {completeTodos}
+          <h1>{completeTodos}</h1>
         </>
   )
 }
